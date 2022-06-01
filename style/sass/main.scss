@@ -34,6 +34,7 @@
         //Filtres
         .inputFilters {
             display: flex;
+            margin-bottom: 10px;
             // border: 4px solid greenyellow;
             @media screen and (max-width: 768px) {
                 flex-wrap: wrap;
