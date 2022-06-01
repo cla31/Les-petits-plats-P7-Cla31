@@ -1,0 +1,257 @@
+        .container-fluid {
+            // border: 2px solid green;
+            margin-top: 20px;
+            .header {
+                // border: 4px solid pink;
+                justify-content: center;
+                text-align: center;
+                padding-bottom: 30px;
+                .title {
+                    color: #d04f4f;
+                }
+            }
+            .form-group {
+                position: relative;
+                // background-color: pink;
+                .form-control {
+                    font-weight: bold;
+                    cursor: pointer;
+                    background-color: #e7e7e7;
+                }
+                .form-control::placeholder {
+                    opacity: 0.90;
+                    font-weight: 100;
+                }
+                .searchIcon {
+                    position: absolute;
+                    right: 1rem;
+                    top: 0.5rem;
+                    z-index: 10;
+                }
+            }
+            //Les filtres
+            // .inputFilters {
+            //     display: flex;
+            //     // border: 4px solid greenyellow;
+            //     // @media screen and (max-width: 992px) {
+            //     //     flex-direction: column;
+            //     // }
+            //     @media screen and (max-width: 768px) {
+            //         flex-direction: column;
+            //     }
+            // }
+            // .filters {
+            //     margin-bottom: 40px;
+            //     .inputGreen,
+            //     .inputRed,
+            //     .inputBlue {
+            //         // display: flex;
+            //         position: relative;
+            //         // border: 4px solid greenyellow;
+            //         .form-control {
+            //             color: #e7e7e7;
+            //             width: 90%;
+            //             min-width: 170px;
+            //             // border: 4px solid red;
+            //         }
+            //     }
+            //     &:hover {
+            //         // border: 4px solid red;
+            //         .dropdown-filter {
+            //             display: block;
+            //         }
+            //         .chevron {
+            //             transform: rotate(180deg);
+            //         }
+            //     }
+            //     &:active {
+            //         // border: 4px solid red;
+            //         .dropdown-filter {
+            //             display: block;
+            //         }
+            //         .chevron {
+            //             transform: rotate(180deg);
+            //         }
+            //     }
+            //     input::placeholder {
+            //         color: #e7e7e7;
+            //     }
+            //     .dropdown-filter {
+            //         display: none;
+            //         position: absolute;
+            //         z-index: 1;
+            //         width: 90%;
+            //         border-radius: 5px;
+            //         // border: 4px solid red;
+            //         .dropdown-item {
+            //             text-decoration: none;
+            //             display: block;
+            //             color: #e7e7e7;
+            //         }
+            //         .blue {
+            //             &:hover {
+            //                 color: #007bff;
+            //             }
+            //         }
+            //         .green {
+            //             // margin-left: 10px;
+            //             // margin-right: 10px;
+            //             &:hover {
+            //                 color: #28a745;
+            //             }
+            //         }
+            //         .red {
+            //             &:hover {
+            //                 color: #dc3545;
+            //             }
+            //         }
+            //     }
+            //     .chevron {
+            //         // border: 4px solid red;
+            //         position: absolute;
+            //         right: 28px;
+            //         top: 12px;
+            //         cursor: pointer;
+            //         @media screen and (max-width: 768px) {
+            //             right: 40px;
+            //         }
+            //     }
+            // }
+        }
+        
+        //*******************************************
+        //*******************************************
+        //**********TEST 2***************************
+        //*******************************************
+        //*******************************************
+        .inputFilters {
+            display: flex;
+            // border: 4px solid greenyellow;
+            @media screen and (max-width: 768px) {
+                // flex-direction: column;
+                flex-wrap: wrap;
+            }
+        }
+        
+        .blockInput {
+            position: relative;
+            &:hover {
+                .dropdown-filter {
+                    display: block;
+                }
+                .chevron {
+                    // border: 4px solid blue;
+                    transform: rotate(180deg);
+                }
+            }
+            .form-control {
+                color: #e7e7e7;
+                width: 90%;
+                min-width: 170px;
+                // border: 4px solid red;
+                &::placeholder {
+                    color: #e7e7e7;
+                }
+            }
+            .chevron {
+                // border: 4px solid red;
+                position: absolute;
+                right: 28px;
+                top: 12px;
+                cursor: pointer;
+                // @media screen and (max-width: 768px) {
+                //     right: 40px;
+                // }
+            }
+            .dropdown-filter {
+                display: none;
+                position: absolute;
+                z-index: 1;
+                width: 90%;
+                border-radius: 5px;
+                // border: 4px solid red;
+                .dropdown-item {
+                    text-decoration: none;
+                    display: block;
+                    color: #e7e7e7;
+                    &:hover {
+                        background-color: #ddd;
+                    }
+                }
+                .blue {
+                    &:hover {
+                        color: #007bff;
+                    }
+                }
+                .green {
+                    // margin-left: 10px;
+                    // margin-right: 10px;
+                    &:hover {
+                        color: #28a745;
+                    }
+                }
+                .red {
+                    &:hover {
+                        color: #dc3545;
+                    }
+                }
+            }
+        }
+        
+        //Les recettes
+        .card {
+            margin-bottom: 20px;
+        }
+        
+        .card-body {
+            background-color: #e7e7e7;
+            &__header {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+        
+        .card-title {
+            font-family: "Lato", sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+        }
+        
+        .main-card {
+            display: flex;
+            // flex-direction: row;
+            // justify-content: space-between;
+            // background-color: #d04f4f;
+            // padding: 0px;
+        }
+        
+        .time,
+        .ingredients {
+            font-family: "Lato", sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            list-style: none;
+        }
+        
+        .ingredients {
+            // margin: 0px;
+            padding-left: 0px;
+        }
+        
+        .minutes {
+            font-size: 18px;
+            .icon-minutes {
+                margin-right: 5px;
+                // background-color: #d04f4f;
+            }
+        }
+        
+        .card-text {
+            font-family: "Roboto", sans-serif;
+            font-weight: 400;
+            height: 110px;
+            margin-left: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 12px;
+        }

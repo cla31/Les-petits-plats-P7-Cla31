@@ -1,0 +1,139 @@
+.container-fluid {
+  margin-top: 20px;
+}
+.container-fluid .header {
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 30px;
+}
+.container-fluid .header .title {
+  color: #d04f4f;
+}
+.container-fluid .form-group {
+  position: relative;
+}
+.container-fluid .form-group .form-control {
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #e7e7e7;
+}
+.container-fluid .form-group .form-control::placeholder {
+  opacity: 0.9;
+  font-weight: 100;
+}
+.container-fluid .form-group .searchIcon {
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+  z-index: 10;
+}
+
+.inputFilters {
+  display: flex;
+}
+@media screen and (max-width: 768px) {
+  .inputFilters {
+    flex-wrap: wrap;
+  }
+}
+
+.blockInput {
+  position: relative;
+}
+.blockInput:hover .dropdown-filter {
+  display: block;
+}
+.blockInput:hover .chevron {
+  transform: rotate(180deg);
+}
+.blockInput .form-control {
+  color: #e7e7e7;
+  width: 90%;
+  min-width: 170px;
+}
+.blockInput .form-control::placeholder {
+  color: #e7e7e7;
+}
+.blockInput .chevron {
+  position: absolute;
+  right: 28px;
+  top: 12px;
+  cursor: pointer;
+}
+.blockInput .dropdown-filter {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  width: 90%;
+  border-radius: 5px;
+}
+.blockInput .dropdown-filter .dropdown-item {
+  text-decoration: none;
+  display: block;
+  color: #e7e7e7;
+}
+.blockInput .dropdown-filter .dropdown-item:hover {
+  background-color: #ddd;
+}
+.blockInput .dropdown-filter .blue:hover {
+  color: #007bff;
+}
+.blockInput .dropdown-filter .green:hover {
+  color: #28a745;
+}
+.blockInput .dropdown-filter .red:hover {
+  color: #dc3545;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.card-body {
+  background-color: #e7e7e7;
+}
+.card-body__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.main-card {
+  display: flex;
+}
+
+.time,
+.ingredients {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  list-style: none;
+}
+
+.ingredients {
+  padding-left: 0px;
+}
+
+.minutes {
+  font-size: 18px;
+}
+.minutes .icon-minutes {
+  margin-right: 5px;
+}
+
+.card-text {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  height: 110px;
+  margin-left: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+
+/*# sourceMappingURL=style.css.map */
