@@ -5,6 +5,7 @@ class Recipe {
         this.name = datas.name;
         this.servings = datas.servings;
         this.ingredients = datas.ingredients;
+        // console.log("Les ingrédients", this.ingredients[0])
         this.time = datas.time;
         this.description = datas.description;
         this.appliance = datas.appliance;
@@ -14,43 +15,32 @@ class Recipe {
 
     //Fonction qui gère l'affichage du template de la gallerie:
     display() {
-        return `   
+            return `   
         <article class="col-12 col-lg-4">
             <div class="card">
-                <img src="./assets/recipes/${this.image}" alt="${this.name}">
+                <div class="container-img">
+                    <img class="imgRecipe" src="./assets/recipes/${this.image}" alt="${this.name}">
+                </div>
                 <div class="card-body">
                     <div class="card-body__header">
                         <h2 class="card-title">${this.name}</h2>
                         <div class="time">
-                            <p class="minutes">
-                                <span class="icon-minutes">
-                                    <img src="assets/images/time.svg" alt="">
-                                </span>${this.time}
-                            </p>
+                            <div class="minutes">
+                                <span class="icon-minutes"><img src="assets/images/time.svg" alt="icone horloge"> </span>${this.time} min                                                                   
+                            </div>
                         </div>
                     </div>
                     <div class="main-card">
                         <ul class="ingredients">
-                            <li>
-                                <strong>Thon rouge (ou blanc) :</strong> 200 grammes
-                            </li>
-                            <li>
-                                <strong>Concombre :</strong> 1
-                            </li>
-                            <li>
-                                <strong>Tomate :</strong> 2
-                            </li>
-                            <li>
-                                <strong>Carotte :</strong> 1
-                            </li>
-                            <li>
-                                <strong>Citron vert :</strong> 5
-                            </li>
-                            <li>
-                                <strong>Lait de coco :</strong> 100 ml
-                            </li>
+                            ${this.ingredients.map((data)=>
+                                `
+                                    <li> 
+                                    <strong>${data.ingredient}: </strong>${"quantity" in data?data.quantity:""} ${"unit" in data ? data.unit : ""}
+                                    </li>                                                          
+                                `
+                                ).join("")}                            
                         </ul>
-                        <p class="card-text col-7 ">${this.description}</p>
+                        <p class="card-text">${this.description}</p>
                     </div>
                 </div>
             </div>
@@ -58,4 +48,25 @@ class Recipe {
     `
     }
 
+}
+
+{
+    /* <li>
+        <strong>Thon rouge (ou blanc) :</strong> 200 grammes
+    </li>
+    <li>
+        <strong>Concombre :</strong> 1
+    </li>
+    <li>
+        <strong>Tomate :</strong> 2
+    </li>
+    <li>
+        <strong>Carotte :</strong> 1
+    </li>
+    <li>
+        <strong>Citron vert :</strong> 5
+    </li>
+    <li>
+        <strong>Lait de coco :</strong> 100 ml
+    </li> */
 }
