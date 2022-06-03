@@ -27,7 +27,7 @@ async function orchestrator(pathJson) {
         const jsonDatas = await getDatas(pathJson);
         //***Récupération des données pour les recettes et transformation en objets.
         const elements = jsonDatas.recipes;
-        // console.log("Les recettes??: ", datasRecipes);
+        // console.log("Les recettes??: ", elements);
         const objectRecipes = Objects(elements, Recipe);
         // console.log("Les objets recette: ", objectRecipes);
         display("recipesCards", objectRecipes);
@@ -60,6 +60,17 @@ async function orchestrator(pathJson) {
         // console.log("Les objets appareil ds le tableau???", appliances);
         display("appliances", appliances);
         //***Création des objets ustensiles:
+        const ustensilsData = [];
+        elements.forEach(element => {
+            // console.log("Array ustensiles", element.ustensils);
+            element.ustensils.forEach(index => {
+                // console.log("Object ustensiles", index);
+                ustensilsData.push(index);
+            })
+        });
+        const uniqueUstensils = [...new Set(ustensilsData)];
+        const ustensils = Objects(uniqueUstensils, Ustensil);
+        display("ustensils", ustensils);
 
     } catch (erreur) {
         console.log(erreur);
