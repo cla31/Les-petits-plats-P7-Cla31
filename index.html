@@ -45,11 +45,11 @@
                     <div class="blockInput">
                         <input class="bg-primary form-control" type="text" placeholder="Ingrédients">
                         <img class="chevron" src="./assets/images/chevron.svg" alt="bouton pour déployer les filtres">
-                        <div class="bg-primary dropdown-filter">
-                            <a class="dropdown-item blue" href="#">Action</a>
+                        <div class="bg-primary dropdown-filter" id="ingredients">
+                            <!-- <a class="dropdown-item blue" href="#">Action</a>
                             <a class="dropdown-item blue" href="#">Another action</a>
                             <a class="dropdown-item blue" href="#">Something else here</a>
-                            <a class="dropdown-item blue" href="#">Separated link</a>
+                            <a class="dropdown-item blue" href="#">Separated link</a> -->
                         </div>
                     </div>
                     <!-- ********** Un filtre -->
@@ -57,10 +57,10 @@
                         <input class="bg-success form-control" type="text" placeholder="Appareils">
                         <img class="chevron" src="./assets/images/chevron.svg" alt="bouton pour déployer les filtres">
                         <div class="bg-success dropdown-filter">
-                            <a class="dropdown-item green" href="#">Action</a>
+                            <!-- <a class="dropdown-item green" href="#">Action</a>
                             <a class="dropdown-item green" href="#">Another action</a>
                             <a class="dropdown-item green" href="#">Something else here</a>
-                            <a class="dropdown-item green" href="#">Separated link</a>
+                            <a class="dropdown-item green" href="#">Separated link</a> -->
                         </div>
                     </div>
                     <!-- ********** Un filtre -->
@@ -83,25 +83,14 @@
         <main>
             <div class="row" id="recipesCards"></div>
         </main>
-        <!-- <script>
-            //Test pour vérifier si une clé existe dans un objet
-            let myBook = {
-                title: 'The Story of Tau',
-                author: 'Will Alexander',
-                numberOfPages: 250,
-                isAvailable: true
-            };
-            console.log("Hello world!!");
-            if ("author" in myBook) {
-                console.log(myBook.author);
-            }
-        </script> -->
 
     </div>
     <!-- Datas -->
     <script type="text/javascript" src="./scripts/getDatas.js"></script>
-    <!-- Objects -->
+    <!-- Factories -->
     <script type="text/javascript" src="./scripts/factories/recipes.js"></script>
+    <script type="text/javascript" src="./scripts/factories/dropdown.js"></script>
+
     <!-- Pages -->
     <script type="text/javascript" src="./scripts/pages/index.js"></script>
     <!-- Links Bootstrap -->

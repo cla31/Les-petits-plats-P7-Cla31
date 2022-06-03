@@ -49,24 +49,3 @@ class Recipe {
     }
 
 }
-
-{
-    /* <li>
-        <strong>Thon rouge (ou blanc) :</strong> 200 grammes
-    </li>
-    <li>
-        <strong>Concombre :</strong> 1
-    </li>
-    <li>
-        <strong>Tomate :</strong> 2
-    </li>
-    <li>
-        <strong>Carotte :</strong> 1
-    </li>
-    <li>
-        <strong>Citron vert :</strong> 5
-    </li>
-    <li>
-        <strong>Lait de coco :</strong> 100 ml
-    </li> */
-}
