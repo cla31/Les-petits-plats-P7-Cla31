@@ -1,21 +1,3 @@
-// function displayRecipes(id, recipes) {
-//     try {
-//         document.getElementById(id).innerHTML = ` ${recipes.map( recipe =>  {return recipe.display()
-//         }).join('')}`;
-//     } catch (erreur) {
-//         console.log(erreur);
-//     }
-// }
-
-// function displayIngredients(id, ingredients) {
-//     try {
-//         document.getElementById(id).innerHTML = ` ${ingredients.map( element =>  {return element.display()
-//         }).join('')}`;
-//     } catch (erreur) {
-//         console.log(erreur);
-//     }
-// }
-
 function display(id, elements) {
     try {
         document.getElementById(id).innerHTML = ` ${elements.map( element =>  {return element.display()
@@ -43,14 +25,13 @@ function Objects(elements, Instance) {
 async function orchestrator(pathJson) {
     try {
         const jsonDatas = await getDatas(pathJson);
-        //Récupération des données pour les recettes et transformation en objets.
+        //***Récupération des données pour les recettes et transformation en objets.
         const elements = jsonDatas.recipes;
         // console.log("Les recettes??: ", datasRecipes);
         const objectRecipes = Objects(elements, Recipe);
         // console.log("Les objets recette: ", objectRecipes);
         display("recipesCards", objectRecipes);
-        //Création des objets ingrédients:
-        // const elements = jsonDatas.recipes;
+        //***Création des objets ingrédients:
         const ingredientsData = [];
         // console.log("début de recherche ingrédient: ", elements);
         elements.forEach(element => {
@@ -61,9 +42,24 @@ async function orchestrator(pathJson) {
             })
         });
         // console.log("Les ingrédients dans un tableau", ingredientsData);
-        const ingredients = Objects(ingredientsData, Ingredient);
-        console.log("Les objets ingrédients", ingredients);
+        const uniqueIngredients = [...new Set(ingredientsData)];
+        // console.log("Les ingrédients uniques", uniqueIngredients);
+        const ingredients = Objects(uniqueIngredients, Ingredient);
+        // console.log("Les objets ingrédients", ingredients);
         display("ingredients", ingredients);
+        //***Création des objets appareils:
+        const appliancesData = [];
+        elements.forEach(element => {
+            // console.log("Array appareil", element.appliance);
+            appliancesData.push(element.appliance);
+        });
+        // console.log("Les appareils dans un tableau", appliancesData);
+        const uniqueAppliances = [...new Set(appliancesData)];
+        // console.log("Les appareils dans un tableau sans doublons", uniqueAppliances);
+        const appliances = Objects(uniqueAppliances, Device);
+        // console.log("Les objets appareil ds le tableau???", appliances);
+        display("appliances", appliances);
+        //***Création des objets ustensiles:
 
     } catch (erreur) {
         console.log(erreur);

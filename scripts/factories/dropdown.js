@@ -9,3 +9,26 @@ class Ingredient {
         `
     }
 }
+
+class Device {
+    constructor(appliance) {
+        this.appliance = appliance;
+        // console.log("L'appareil dans l'objet", this.appliance)
+    }
+    display() {
+        return `
+            <a class="dropdown-item green" href="#">${this.appliance}</a>
+        `
+    }
+}
+
+class Ustensil {
+    constructor(ustensil) {
+        this.ustensil = ustensil;
+    }
+    display() {
+        return `
+            <a class="dropdown-item red" href="#">${this.ustensil}</a>
+        `
+    }
+}
