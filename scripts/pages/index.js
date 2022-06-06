@@ -20,8 +20,6 @@ function Objects(elements, Instance) {
 }
 
 
-
-
 async function orchestrator(pathJson) {
     try {
         const jsonDatas = await getDatas(pathJson);
@@ -47,6 +45,16 @@ async function orchestrator(pathJson) {
         const ingredients = Objects(uniqueIngredients, Ingredient);
         // console.log("Les objets ingrédients", ingredients);
         display("ingredients", ingredients);
+        //Rajout du eventlistener sur la liste d'ingrédients:
+        const ingredientsDropdownDom = document.getElementsByClassName('blue');
+        // console.log("Ingredients du dropdown", ingredientsDopdown)
+        const ingredientsDropdown = Array.from(ingredientsDropdownDom);
+        //Récupération de la div ds le html:
+        // const tag = getElementById("tag");
+        // console.log("Le tag", tag);
+        ingredientsDropdown.forEach((link, index) => link.addEventListener('click', e => {
+            console.log("Ingrédient cliqué", ingredients[index]);
+        }));
         //***Création des objets appareils:
         const appliancesData = [];
         elements.forEach(element => {
