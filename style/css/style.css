@@ -28,6 +28,96 @@
   z-index: 10;
 }
 
+.tag {
+  display: flex;
+}
+.tag .boxTagBlue {
+  position: relative;
+}
+.tag .boxTagBlue #crossBlue {
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  right: 4px;
+  top: 4px;
+}
+.tag .boxTagBlue #tagBlue {
+  background-color: #007bff;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.tag .boxTagBlue #tagBlue a {
+  color: #e7e7e7;
+  margin-right: 8px;
+}
+.tag .boxTagBlue #tagBlue a:hover {
+  background-color: #007bff;
+  border-radius: 5px;
+}
+.tag .boxTagGreen {
+  position: relative;
+}
+.tag .boxTagGreen #crossGreen {
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  right: 10px;
+  top: 4px;
+}
+.tag .boxTagGreen #tagGreen {
+  background-color: #28a745;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+@media screen and (max-width: 768px) {
+  .tag .boxTagGreen #tagGreen {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+.tag .boxTagGreen #tagGreen a {
+  color: #e7e7e7;
+}
+.tag .boxTagGreen #tagGreen a:hover {
+  background-color: #28a745;
+  border-radius: 5px;
+}
+.tag .boxTagGreen #tagGreen img {
+  display: none;
+}
+.tag .boxTagRed {
+  position: relative;
+}
+.tag .boxTagRed #crossRed {
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  right: 4px;
+  top: 4px;
+}
+.tag .boxTagRed #tagRed {
+  background-color: #dc3545;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.tag .boxTagRed #tagRed a {
+  color: #e7e7e7;
+}
+.tag .boxTagRed #tagRed a:hover {
+  background-color: #dc3545;
+  border-radius: 5px;
+}
+@media screen and (max-width: 768px) {
+  .tag {
+    flex-direction: column;
+  }
+}
+
 .inputFilters {
   display: flex;
   margin-bottom: 10px;
@@ -98,7 +188,7 @@
   width: auto;
 }
 .blockInput .dropdown-filter .dropdown-item:hover {
-  background-color: #ddd;
+  color: #e7e7e7;
 }
 .blockInput .dropdown-filter .blue:hover {
   color: #007bff;

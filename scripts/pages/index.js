@@ -1,8 +1,16 @@
+// DOM
+let ingredientsDropdownDom = document.getElementsByClassName('blue');
+let appliancesDropdownDom = document.getElementsByClassName('green');
+let ustensilsDropdownDom = document.getElementsByClassName('red');
 // Les tableaux
 let recipes = [];
 let ingredients = [];
 let appliances = [];
 let ustensils = [];
+
+
+
+
 
 //fonction qui permet d'afficher:
 function display(id, elements) {
@@ -33,7 +41,31 @@ function displayRecipes() {
     display("recipesCards", objectRecipes);
 }
 
-//fonction qui permet d'afficher les ingrédients
+//fonction qui affiche les tags au clic:
+function displayTag(tagDom, elements, id, idCross) {
+    const tagsDropdown = Array.from(tagDom);
+    //Récupération de la div ds le html:
+    const tag = document.getElementById(id);
+    // console.log("Le tag", tag);
+    tagsDropdown.forEach((link, index) => link.addEventListener('click', e => {
+        // console.log("Ingrédient cliqué", elements[index]);
+        e.preventDefault();
+        tag.innerHTML = `${elements[index].display()}`;
+        document.getElementById(idCross).style.display = "block";
+        // closeTag(idCross, id);
+    }));
+}
+//Fonctions pour fermer le tag séléctionné:
+function closeTag(cross, tag) {
+    document.getElementById(cross).addEventListener('click', e => {
+        e.preventDefault();
+        document.getElementById(tag).style.display = "none";
+        document.getElementById(cross).style.display = "none";
+    })
+
+}
+
+//fonction qui permet d'afficher les ingrédients, son tag au clic et sa fermeture au clic de la croix:
 function displayIngredients() {
     recipes.forEach(element => {
         // console.log("Array ingredient", element.ingredients);
@@ -48,10 +80,13 @@ function displayIngredients() {
     ingredients = Objects(uniqueIngredients, Ingredient);
     // console.log("Les objets ingrédients", ingredients);
     display("ingredients", ingredients);
-
+    //Fonction qui affiche le tag lorsqu'il est cliqué:
+    displayTag(ingredientsDropdownDom, ingredients, "tagBlue", "crossBlue");
+    //Fonction qui ferme le tag au clic sur la croix.
+    closeTag("crossBlue", "tagBlue");
 }
 
-//fonction qui permet d'afficher les appareils:
+//fonction qui permet d'afficher les appareils, son tag au clic et sa fermeture au clic de la croix:
 function displayAppliances() {
     recipes.forEach(element => {
         // console.log("Array appareil", element.appliance);
@@ -63,10 +98,13 @@ function displayAppliances() {
     appliances = Objects(uniqueAppliances, Device);
     // console.log("Les objets appareil ds le tableau???", appliances);
     display("appliances", appliances);
-
+    //Fonction qui affiche le tag lorsqu'il est cliqué:
+    displayTag(appliancesDropdownDom, appliances, "tagGreen", "crossGreen");
+    //Fonction qui ferme le tag au clic sur la croix.
+    closeTag("crossGreen", "tagGreen");
 }
 
-//fonction qui permet d'afficher les ustensiles:
+//fonction qui permet d'afficher les ustensiles, son tag au clic et sa fermeture au clic de la croix:
 function displayUstensils() {
     recipes.forEach(element => {
         // console.log("Array ustensiles", element.ustensils);
@@ -78,7 +116,10 @@ function displayUstensils() {
     const uniqueUstensils = [...new Set(ustensils)];
     ustensils = Objects(uniqueUstensils, Ustensil);
     display("ustensils", ustensils);
-
+    //Fonction qui affiche le tag lorsqu'il est cliqué:
+    displayTag(ustensilsDropdownDom, ustensils, "tagRed", "crossRed");
+    //Fonction qui ferme le tag au clic sur la croix.
+    closeTag("crossRed", "tagRed");
 }
 
 //fonction moteur de la page:
@@ -86,7 +127,7 @@ async function init(pathJson) {
 
     try {
         const jsonDatas = await getDatas(pathJson);
-        //***Récupération des données pour les recettes et transformation en objets.
+        //Récupération des données pour les recettes.
         recipes = jsonDatas.recipes;
         // console.log("Les recettes??: ", recipes);
         orchestrator();

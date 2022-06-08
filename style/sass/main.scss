@@ -31,6 +31,96 @@
             }
         }
         
+        //tags
+        .tag {
+            display: flex;
+            .boxTagBlue {
+                position: relative;
+                #crossBlue {
+                    display: none;
+                    cursor: pointer;
+                    position: absolute;
+                    z-index: 1;
+                    right: 4px;
+                    top: 4px;
+                }
+                #tagBlue {
+                    background-color: #007bff;
+                    margin-bottom: 10px;
+                    border-radius: 5px;
+                    a {
+                        color: #e7e7e7;
+                        margin-right: 8px;
+                        &:hover {
+                            // color: #007bff;
+                            background-color: #007bff;
+                            border-radius: 5px;
+                        }
+                    }
+                }
+            }
+            .boxTagGreen {
+                position: relative;
+                #crossGreen {
+                    display: none;
+                    cursor: pointer;
+                    position: absolute;
+                    z-index: 1;
+                    right: 10px;
+                    top: 4px;
+                }
+                #tagGreen {
+                    background-color: #28a745;
+                    margin-bottom: 10px;
+                    border-radius: 5px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    @media screen and (max-width: 768px) {
+                        margin-left: 0px;
+                        margin-right: 0px;
+                    }
+                    a {
+                        color: #e7e7e7;
+                        &:hover {
+                            // color: #28a745;
+                            background-color: #28a745;
+                            border-radius: 5px;
+                        }
+                    }
+                    img {
+                        display: none;
+                    }
+                }
+            }
+            .boxTagRed {
+                position: relative;
+                #crossRed {
+                    display: none;
+                    cursor: pointer;
+                    position: absolute;
+                    z-index: 1;
+                    right: 4px;
+                    top: 4px;
+                }
+                #tagRed {
+                    background-color: #dc3545;
+                    margin-bottom: 10px;
+                    border-radius: 5px;
+                    a {
+                        color: #e7e7e7;
+                        &:hover {
+                            // color: #dc3545;
+                            background-color: #dc3545;
+                            border-radius: 5px;
+                        }
+                    }
+                }
+            }
+            @media screen and (max-width: 768px) {
+                flex-direction: column;
+            }
+        }
+        
         //Filtres
         .inputFilters {
             display: flex;
@@ -114,7 +204,8 @@
                     color: #e7e7e7;
                     width: auto;
                     &:hover {
-                        background-color: #ddd;
+                        // background-color: #ddd;
+                        color: #e7e7e7;
                     }
                 }
                 .blue {
