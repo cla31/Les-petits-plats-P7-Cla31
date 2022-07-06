@@ -1,15 +1,9 @@
-//Copy avant mentorat du 4 juillet
-
-
-// const tags = document.querySelector(".tags");
 let recipes = [];
 
-//arrays
-// let chosenTags = [];
+//Tableaux
 let chosenIngredients = [];
 let chosenAppliances = [];
 let chosenUstensils = [];
-
 
 
 //fonction qui permet de transformer les éléments d'un tableau en objets:
@@ -26,7 +20,7 @@ function Objects(elements, Instance) {
 
 //1
 //fonction moteur de la page, récupère le jeu de données:
-async function createRecipes(pathJson) {
+async function init(pathJson) {
 
     try {
         //1.1
@@ -40,17 +34,97 @@ async function createRecipes(pathJson) {
     }
 }
 
-createRecipes(pathJsonProject);
+init(pathJsonProject);
 
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+//2:
+function orchestrator() {
+    //2.1.Tri de la liste des recettes
+    const filteredIngredients = filterIngredients(recipes);
+    const filteredAppliances = filterAppliances(filteredIngredients);
+    //Recettes finales à afficher
+    const recipesToDisplay = filterUstensils(filteredAppliances);
+    //2.2.Affiche les recettes
+    displayRecipes(recipesToDisplay);
+    //2.3.Affiche les dropdowns
+    displayIngredientsFromRecipes(recipesToDisplay);
+    displayAppliancesFromRecipes(recipesToDisplay);
+    displayUstensilsFromRecipes(recipesToDisplay);
+    //2.4.Affiche les tags
+    displayTagIngredients();
+    displayTagAppliances();
+    displayTagUstensils();
+}
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//Pour la partie 2.1
+//Filtre des ingrédients
+function filterIngredients(recipesToFilter) {
+    //Filtre les recettes selon les ingrédients choisis
+    let selectedIngredients = recipesToFilter;
+    chosenIngredients.forEach((item) => {
+        // console.log("ITEM", item);
+        selectedIngredients = selectedIngredients.filter(
+            (recipe) =>
+            recipe.ingredients.find((elt) =>
+                // console.log(item, elt.ingredient);
+                elt.ingredient.toLowerCase().includes(item)
+            )
+        );
+        // console.log("selected ingredients", selectedIngredients);
+    });
+    return selectedIngredients;
+}
+//2.1
+//Filtre des appareils
+function filterAppliances(recipesToFilter) {
+    let selectedAppliances = recipesToFilter;
+    chosenAppliances.forEach((item) => {
+        // console.log("item", item);
+        selectedAppliances = selectedAppliances.filter(
+            (recipe) =>
+            // console.log(recipe.appliance)
+            recipe.appliance.toLowerCase().includes(item)
+
+        );
+    });
+    // console.log("selectedAppliance++++++++", selectedAppliances);
+    return selectedAppliances;
+}
+//2.1
+//Filtre les ustensils
+function filterUstensils(recipesToFilter) {
+    //Filtre les recettes filtrées par appareils, selon les ustensiles choisis
+    let selectedUstensils = recipesToFilter;
+    chosenUstensils.forEach((item) => {
+        // console.log("item ustensils", item);
+        selectedUstensils = selectedUstensils.filter((recipe) =>
+            recipe.ustensils.find((elt) =>
+                elt.toLowerCase().includes(item)
+            )
+        );
+    });
+    // console.log("selectedUstensils++++++++", selectedUstensils);
+    return selectedUstensils;
+}
+
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 //2.2 fonction qui permet d'afficher les recettes
 function displayRecipes(recipesToDisplay) {
-    // const objectRecipes = Objects(recipes, Recipe);
     // console.log("Les objets recette: ", objectRecipes);
     document.getElementById("recipesCards").innerHTML = ` ${recipesToDisplay.map( element =>  {return element.display()
     }).join('')}`;
 }
-
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //2.3
 function displayIngredientsFromRecipes(allRecipes) {
     let allIngredients = [];
@@ -117,7 +191,7 @@ function displayAppliancesFromRecipes(allRecipes) {
     // console.log("appareils à cliquer.....*****", allAppliances);
 
     allAppliances.forEach((item) => {
-        //     //A chaque fois qu'on clique sur un item
+        //A chaque fois qu'on clique sur un item
         item.addEventListener("click", () => {
             console.log("ITEMMMM", item.dataset.element);
             if (!chosenAppliances.includes(item.dataset.element.toLowerCase())) {
@@ -125,7 +199,6 @@ function displayAppliancesFromRecipes(allRecipes) {
                     item.dataset.element.toLowerCase()
                 );
             }
-            // chosenTags.push(item);
             orchestrator();
         });
     });
@@ -157,13 +230,12 @@ function displayUstensilsFromRecipes(allRecipes) {
     allUstensils.forEach((item) => {
         //A chaque fois qu'on clique sur un item
         item.addEventListener("click", () => {
-            console.log("ITEMMMM", item.dataset.element);
+            // console.log("ITEMMMM", item.dataset.element);
             if (!chosenUstensils.includes(item.dataset.element.toLowerCase())) {
                 chosenUstensils.push(
                     item.dataset.element.toLowerCase()
                 );
             }
-            // chosenTags.push(item);
             //         // console.log("Cliiiiiiqué!!!!!!!");
             //         // console.log("Tableau des tags selectionnés ds createIngredient....", chosenTags);
             //         // console.log("Les objets ingrédients dans createIngr+++++++++++++++", ingredients);
@@ -173,79 +245,9 @@ function displayUstensilsFromRecipes(allRecipes) {
 
 };
 
-
-
-//2:
-function orchestrator() {
-    //2.1.Tri de la liste des recettes
-    const filteredIngredients = filterIngredients(recipes);
-    const filteredAppliances = filterAppliances(filteredIngredients);
-    //Recettes finales à afficher
-    const recipesToDisplay = filterUstensils(filteredAppliances);
-    //2.2.Affiche les recettes
-    // displayRecipes(filteredIngredients);
-    // displayRecipes(filteredAppliances);
-    displayRecipes(recipesToDisplay);
-    //2.3.Affiche les dropdowns
-    displayIngredientsFromRecipes(recipesToDisplay);
-    displayAppliancesFromRecipes(recipesToDisplay);
-    displayUstensilsFromRecipes(recipesToDisplay);
-    //2.4.Affiche les tags
-    displayTagIngredients();
-    displayTagAppliances();
-    displayTagUstensils();
-}
-
-//Pour la partie 2.1
-//Filtre des ingrédients
-function filterIngredients(recipesToFilter) {
-    //Filtre les recettes selon les ingrédients choisis
-    let selectedIngredients = recipesToFilter;
-    chosenIngredients.forEach((item) => {
-        // console.log("ITEM", item);
-        selectedIngredients = selectedIngredients.filter(
-            (recipe) =>
-            recipe.ingredients.find((elt) =>
-                // console.log(item, elt.ingredient);
-                elt.ingredient.toLowerCase().includes(item)
-            )
-        );
-        // console.log("selected ingredients", selectedIngredients);
-    });
-    return selectedIngredients;
-}
-//2.1
-//Filtre des appareils
-function filterAppliances(recipesToFilter) {
-    let selectedAppliances = recipesToFilter;
-    chosenAppliances.forEach((item) => {
-        // console.log("item", item);
-        selectedAppliances = selectedAppliances.filter(
-            (recipe) =>
-            // console.log(recipe.appliance)
-            recipe.appliance.toLowerCase().includes(item)
-
-        );
-    });
-    // console.log("selectedAppliance++++++++", selectedAppliances);
-    return selectedAppliances;
-}
-//2.1
-//Filtre les ustensils
-function filterUstensils(recipesToFilter) {
-    //Filtre les recettes filtrées par appareils, selon les ustensiles choisis
-    let selectedUstensils = recipesToFilter;
-    chosenUstensils.forEach((item) => {
-        // console.log("item ustensils", item);
-        selectedUstensils = selectedUstensils.filter((recipe) =>
-            recipe.ustensils.find((elt) =>
-                elt.toLowerCase().includes(item)
-            )
-        );
-    });
-    // console.log("selectedUstensils++++++++", selectedUstensils);
-    return selectedUstensils;
-}
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 //2.4
 function displayTagIngredients() {
