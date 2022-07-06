@@ -1,26 +1,16 @@
-// DOM
-let ingredientsDropdownDom = document.getElementsByClassName('blue');
-let appliancesDropdownDom = document.getElementsByClassName('green');
-let ustensilsDropdownDom = document.getElementsByClassName('red');
-// Les tableaux
+//Copy avant mentorat du 4 juillet
+
+
+// const tags = document.querySelector(".tags");
 let recipes = [];
-let ingredients = [];
-let appliances = [];
-let ustensils = [];
+
+//arrays
+// let chosenTags = [];
+let chosenIngredients = [];
+let chosenAppliances = [];
+let chosenUstensils = [];
 
 
-
-
-
-//fonction qui permet d'afficher:
-function display(id, elements) {
-    try {
-        document.getElementById(id).innerHTML = ` ${elements.map( element =>  {return element.display()
-        }).join('')}`;
-    } catch (erreur) {
-        console.log(erreur);
-    }
-}
 
 //fonction qui permet de transformer les éléments d'un tableau en objets:
 function Objects(elements, Instance) {
@@ -34,116 +24,323 @@ function Objects(elements, Instance) {
     }
 }
 
-//fonction qui permet d'afficher les recettes
-function displayRecipes() {
-    const objectRecipes = Objects(recipes, Recipe);
-    // console.log("Les objets recette: ", objectRecipes);
-    display("recipesCards", objectRecipes);
-}
-
-//fonction qui affiche les tags au clic:
-function displayTag(tagDom, elements, id, idCross) {
-    const tagsDropdown = Array.from(tagDom);
-    //Récupération de la div ds le html:
-    const tag = document.getElementById(id);
-    // console.log("Le tag", tag);
-    tagsDropdown.forEach((link, index) => link.addEventListener('click', e => {
-        // console.log("Ingrédient cliqué", elements[index]);
-        e.preventDefault();
-        tag.innerHTML = `${elements[index].display()}`;
-        document.getElementById(idCross).style.display = "block";
-        // closeTag(idCross, id);
-    }));
-}
-//Fonctions pour fermer le tag séléctionné:
-function closeTag(cross, tag) {
-    document.getElementById(cross).addEventListener('click', e => {
-        e.preventDefault();
-        document.getElementById(tag).style.display = "none";
-        document.getElementById(cross).style.display = "none";
-    })
-
-}
-
-//fonction qui permet d'afficher les ingrédients, son tag au clic et sa fermeture au clic de la croix:
-function displayIngredients() {
-    recipes.forEach(element => {
-        // console.log("Array ingredient", element.ingredients);
-        element.ingredients.forEach(index => {
-            // console.log("Object ingredient", index.ingredient)
-            ingredients.push(index.ingredient);
-        })
-    });
-    // console.log("Les ingrédients dans un tableau", ingredientsData);
-    const uniqueIngredients = [...new Set(ingredients)];
-    // console.log("Les ingrédients uniques", uniqueIngredients);
-    ingredients = Objects(uniqueIngredients, Ingredient);
-    // console.log("Les objets ingrédients", ingredients);
-    display("ingredients", ingredients);
-    //Fonction qui affiche le tag lorsqu'il est cliqué:
-    displayTag(ingredientsDropdownDom, ingredients, "tagBlue", "crossBlue");
-    //Fonction qui ferme le tag au clic sur la croix.
-    closeTag("crossBlue", "tagBlue");
-}
-
-//fonction qui permet d'afficher les appareils, son tag au clic et sa fermeture au clic de la croix:
-function displayAppliances() {
-    recipes.forEach(element => {
-        // console.log("Array appareil", element.appliance);
-        appliances.push(element.appliance);
-    });
-    // console.log("Les appareils dans un tableau", appliancesData);
-    const uniqueAppliances = [...new Set(appliances)];
-    // console.log("Les appareils dans un tableau sans doublons", uniqueAppliances);
-    appliances = Objects(uniqueAppliances, Device);
-    // console.log("Les objets appareil ds le tableau???", appliances);
-    display("appliances", appliances);
-    //Fonction qui affiche le tag lorsqu'il est cliqué:
-    displayTag(appliancesDropdownDom, appliances, "tagGreen", "crossGreen");
-    //Fonction qui ferme le tag au clic sur la croix.
-    closeTag("crossGreen", "tagGreen");
-}
-
-//fonction qui permet d'afficher les ustensiles, son tag au clic et sa fermeture au clic de la croix:
-function displayUstensils() {
-    recipes.forEach(element => {
-        // console.log("Array ustensiles", element.ustensils);
-        element.ustensils.forEach(index => {
-            // console.log("Object ustensiles", index);
-            ustensils.push(index);
-        })
-    });
-    const uniqueUstensils = [...new Set(ustensils)];
-    ustensils = Objects(uniqueUstensils, Ustensil);
-    display("ustensils", ustensils);
-    //Fonction qui affiche le tag lorsqu'il est cliqué:
-    displayTag(ustensilsDropdownDom, ustensils, "tagRed", "crossRed");
-    //Fonction qui ferme le tag au clic sur la croix.
-    closeTag("crossRed", "tagRed");
-}
-
-//fonction moteur de la page:
-async function init(pathJson) {
+//1
+//fonction moteur de la page, récupère le jeu de données:
+async function createRecipes(pathJson) {
 
     try {
+        //1.1
         const jsonDatas = await getDatas(pathJson);
-        //Récupération des données pour les recettes.
-        recipes = jsonDatas.recipes;
-        // console.log("Les recettes??: ", recipes);
+        const objetsRecipes = jsonDatas.recipes;
+        recipes = Objects(objetsRecipes, Recipe);
         orchestrator();
-
 
     } catch (erreur) {
         console.log(erreur);
     }
 }
-// La fonction qui orchestre le jeux de données:
+
+createRecipes(pathJsonProject);
+
+
+//2.2 fonction qui permet d'afficher les recettes
+function displayRecipes(recipesToDisplay) {
+    // const objectRecipes = Objects(recipes, Recipe);
+    // console.log("Les objets recette: ", objectRecipes);
+    document.getElementById("recipesCards").innerHTML = ` ${recipesToDisplay.map( element =>  {return element.display()
+    }).join('')}`;
+}
+
+//2.3
+function displayIngredientsFromRecipes(allRecipes) {
+    let allIngredients = [];
+    allRecipes.forEach(element => {
+        // console.log("Array ingredient", element.ingredients);
+        element.ingredients.forEach(index => {
+            // console.log("Object ingredient", index.ingredient)
+            allIngredients.push(index.ingredient);
+        })
+    });
+    // console.log(allIngredients);
+    // console.log("Les ingrédients dans un tableau", ingredients);
+    allIngredients = [...new Set(allIngredients)].sort();
+    // console.log(allIngredients);
+
+    //Affichage des ingrédients via leur classe et leur fonction.
+    ingredients = Objects(allIngredients, Ingredient);
+    // console.log("Les objets ingrédients", ingredients);
+    document.getElementById("ingredients").innerHTML = ` ${ingredients.map( element =>  {return element.display() }).join('')}`;
+
+    //Préparation de l'affichage de chacun des ingrédients ds le DOM (récupération des classes dans un tableau pour générer l'affichage de tous les ingrédients)
+    allIngredients = Array.from(document.querySelectorAll(".ingredient"));
+    // console.log("ingredients à cliquer.....*****", allIngredients[14]);
+    allIngredients.forEach((item) => {
+        // console.log("ITEMMMM", item.dataset.element);
+        //A chaque fois qu'on clique sur un item
+        item.addEventListener("click", () => {
+            // console.log("ITEMMMM", item.dataset.element);
+            //On vérifie si l'élément est déjà là ou pas
+            if (!chosenIngredients.includes(item.dataset.element.toLowerCase())) {
+                chosenIngredients.push(
+                    item.dataset.element.toLowerCase());
+            }
+            orchestrator();
+        });
+
+    });
+    // console.log("Tableau des tags selectionnés ds createIngredient....", chosenTags);
+
+};
+////////////////////////////////////////////////////////////////////////////
+//2.3
+//Les appareils
+function displayAppliancesFromRecipes(allRecipes) {
+    let allAppliances = [];
+    allRecipes.forEach(element => {
+        // console.log("Array ingredient", element.ingredients);
+        // console.log("Object ingredient", index.ingredient)
+        allAppliances.push(element.appliance);
+
+    });
+    // // console.log(allIngredients);
+    // // console.log("Les ingrédients dans un tableau", ingredients);
+    allAppliances = [...new Set(allAppliances)].sort();
+    // console.log(allIngredients);
+
+    // //Affichage des ingrédients via leur classe et leur fonction.
+    appliances = Objects(allAppliances, Device);
+    // console.log("Les objets appliances", allAppliances);
+    document.getElementById("appliances").innerHTML = ` ${appliances.map( element =>  {return element.display() }).join('')}`;
+
+    // //Préparation de l'affichage de chacun des ingrédients ds le DOM (récupération des classes dans un tableau pour générer l'affichage de tous les ingrédients)
+    allAppliances = Array.from(document.querySelectorAll(".appliance"));
+    // console.log("appareils à cliquer.....*****", allAppliances);
+
+    allAppliances.forEach((item) => {
+        //     //A chaque fois qu'on clique sur un item
+        item.addEventListener("click", () => {
+            console.log("ITEMMMM", item.dataset.element);
+            if (!chosenAppliances.includes(item.dataset.element.toLowerCase())) {
+                chosenAppliances.push(
+                    item.dataset.element.toLowerCase()
+                );
+            }
+            // chosenTags.push(item);
+            orchestrator();
+        });
+    });
+};
+
+////////////////////////////////////////////////////////////////////////////
+//2.3
+//Les ustensils
+function displayUstensilsFromRecipes(allRecipes) {
+    let allUstensils = [];
+    allRecipes.forEach(element => {
+        // console.log("Array ingredient", element.ingredients);
+        element.ustensils.forEach(index => {
+            // console.log("Object ingredient", index.ingredient)
+            allUstensils.push(index);
+        })
+    });
+    // console.log(allUstensils);
+    allUstensils = [...new Set(allUstensils)].sort();
+
+    // //Affichage des ingrédients via leur classe et leur fonction.
+    ustensils = Objects(allUstensils, Ustensil);
+    document.getElementById("ustensils").innerHTML = ` ${ustensils.map( element =>  {return element.display() }).join('')}`;
+
+    // //Préparation de l'affichage de chacun des ingrédients ds le DOM (récupération des classes dans un tableau pour générer l'affichage de tous les ingrédients)
+    allUstensils = Array.from(document.querySelectorAll(".ustensil"));
+    // console.log("ingredients à cliquer.....*****", allIngredients);
+
+    allUstensils.forEach((item) => {
+        //A chaque fois qu'on clique sur un item
+        item.addEventListener("click", () => {
+            console.log("ITEMMMM", item.dataset.element);
+            if (!chosenUstensils.includes(item.dataset.element.toLowerCase())) {
+                chosenUstensils.push(
+                    item.dataset.element.toLowerCase()
+                );
+            }
+            // chosenTags.push(item);
+            //         // console.log("Cliiiiiiqué!!!!!!!");
+            //         // console.log("Tableau des tags selectionnés ds createIngredient....", chosenTags);
+            //         // console.log("Les objets ingrédients dans createIngr+++++++++++++++", ingredients);
+            orchestrator();
+        });
+    });
+
+};
+
+
+
+//2:
 function orchestrator() {
-    displayRecipes();
-    displayIngredients();
-    displayAppliances();
-    displayUstensils();
+    //2.1.Tri de la liste des recettes
+    const filteredIngredients = filterIngredients(recipes);
+    const filteredAppliances = filterAppliances(filteredIngredients);
+    //Recettes finales à afficher
+    const recipesToDisplay = filterUstensils(filteredAppliances);
+    //2.2.Affiche les recettes
+    // displayRecipes(filteredIngredients);
+    // displayRecipes(filteredAppliances);
+    displayRecipes(recipesToDisplay);
+    //2.3.Affiche les dropdowns
+    displayIngredientsFromRecipes(recipesToDisplay);
+    displayAppliancesFromRecipes(recipesToDisplay);
+    displayUstensilsFromRecipes(recipesToDisplay);
+    //2.4.Affiche les tags
+    displayTagIngredients();
+    displayTagAppliances();
+    displayTagUstensils();
+}
+
+//Pour la partie 2.1
+//Filtre des ingrédients
+function filterIngredients(recipesToFilter) {
+    //Filtre les recettes selon les ingrédients choisis
+    let selectedIngredients = recipesToFilter;
+    chosenIngredients.forEach((item) => {
+        // console.log("ITEM", item);
+        selectedIngredients = selectedIngredients.filter(
+            (recipe) =>
+            recipe.ingredients.find((elt) =>
+                // console.log(item, elt.ingredient);
+                elt.ingredient.toLowerCase().includes(item)
+            )
+        );
+        // console.log("selected ingredients", selectedIngredients);
+    });
+    return selectedIngredients;
+}
+//2.1
+//Filtre des appareils
+function filterAppliances(recipesToFilter) {
+    let selectedAppliances = recipesToFilter;
+    chosenAppliances.forEach((item) => {
+        // console.log("item", item);
+        selectedAppliances = selectedAppliances.filter(
+            (recipe) =>
+            // console.log(recipe.appliance)
+            recipe.appliance.toLowerCase().includes(item)
+
+        );
+    });
+    // console.log("selectedAppliance++++++++", selectedAppliances);
+    return selectedAppliances;
+}
+//2.1
+//Filtre les ustensils
+function filterUstensils(recipesToFilter) {
+    //Filtre les recettes filtrées par appareils, selon les ustensiles choisis
+    let selectedUstensils = recipesToFilter;
+    chosenUstensils.forEach((item) => {
+        // console.log("item ustensils", item);
+        selectedUstensils = selectedUstensils.filter((recipe) =>
+            recipe.ustensils.find((elt) =>
+                elt.toLowerCase().includes(item)
+            )
+        );
+    });
+    // console.log("selectedUstensils++++++++", selectedUstensils);
+    return selectedUstensils;
+}
+
+//2.4
+function displayTagIngredients() {
+    const tagsIngr = document.querySelector(".tagsIngredient");
+    // console.log("chosen tags ds display", chosenTags);
+    tagsIngr.innerHTML = ` ${chosenIngredients.map( item =>  
+        {return ` 
+        <div class="tagSelected" style="background-color:#007bff;">
+            ${item}
+            <img class="closeIngredients" src="assets/images/close.svg" class="ml-5 mb-1" alt="" />
+        </div>
+        `
+    }).join('')}`;
+        let cross = document.querySelectorAll(".closeIngredients");
+        console.log("crooooss",cross)
+        cross.forEach((tags, index) => tags.addEventListener("click", e=>{
+            // console.log("INDEEEEEEEX",index);
+            let element = e.target;
+            // suppression de l'element graphique
+            element.parentNode.remove(element);
+            console.log("ChosenIngr avant 1",chosenIngredients);
+            chosenIngredients = chosenIngredients.filter(e => e !== chosenIngredients[index]);
+            console.log("ChosenIngr après 2",chosenIngredients);
+            orchestrator();
+        }));
+}
+//2.4
+function displayTagAppliances(){
+    const tagsIngr = document.querySelector(".tagsAppliance");
+    tagsIngr.innerHTML =` ${chosenAppliances.map( item =>  
+        {return ` 
+    <div class="tagSelected" style="background-color:#28a745;">${item}
+        <img class="closeAppliances" src="assets/images/close.svg" class="ml-5 mb-1" alt="" />
+    </div>`
+    }).join('')}`;
+    let cross = document.querySelectorAll(".closeAppliances");
+        cross.forEach((tags, index) => tags.addEventListener("click", e=>{
+            // console.log("INDEEEEEEEX",index);
+            let element = e.target;
+            // suppression de l'element graphique
+            element.parentNode.remove(element);
+            chosenAppliances = chosenAppliances.filter(e => e !== chosenAppliances[index]);
+            orchestrator();
+        }));
+
+}
+//2.4
+function displayTagUstensils(){
+    const tagsUs = document.querySelector(".tagsUstensils");
+    tagsUs.innerHTML =` ${chosenUstensils.map( item =>  
+        {return ` 
+    <div class="tagSelected" style="background-color:#dc3545;">${item}
+        <img class="closeUstensils" src="assets/images/close.svg" class="ml-5 mb-1" alt="" />
+    </div>`
+    }).join('')}`;
+    let cross = document.querySelectorAll(".closeUstensils");
+        cross.forEach((tags, index) => tags.addEventListener("click", e=>{
+            // console.log("INDEEEEEEEX",index);
+            let element = e.target;
+            // suppression de l'element graphique
+            element.parentNode.remove(element);
+            chosenUstensils = chosenUstensils.filter(e => e !== chosenUstensils[index]);
+            orchestrator();
+        }));
 
 }
 
-init(pathJsonProject);
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
+// Gestion des filtres.
+function filterInput(e) {
+    //toLowerCase = met lea valeurs de la chaîne en miniscule.
+    const inputValue = e.target.value.toLowerCase();
+    // console.log("input value", inputValue);
+    const ingredientsList = document.querySelectorAll(".dropdown-item");
+    // console.log("ingredientsList[2].innerHTML", ingredientsList[2].innerHTML);
+    for (i = 0; i < ingredientsList.length; i++) {
+        // console.log("ingredientsList[i]", ingredientsList[i].innerHTML)
+        //Si l'input ne correspond pas à la liste des ingrédients, ne l'affiche pas.
+        if (!ingredientsList[i].innerHTML.toLowerCase().includes(inputValue)) {
+            ingredientsList[i].style.display = "none";
+        } else {
+            ingredientsList[i].style.display = "list-item";
+        }
+    }
+}
+//Pour les ingrédients
+document.querySelector("#inputBlue").addEventListener("input", filterInput);
+
+//Pour les appareils
+document.querySelector("#inputGreen").addEventListener("input", filterInput);
+//Pour les ustensils
+document.querySelector("#inputRed").addEventListener("input", filterInput);
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////

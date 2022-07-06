@@ -31,48 +31,43 @@
             <div class="row">
                 <form class="col">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Rechercher une recette" name="search">
+                        <input type="text" class="form-control" placeholder="Rechercher une recette" name="search" id="recherche">
+                        <label id="rechercher" for="recherche"></label>
                         <div class="searchIcon" for="search">
                             <img src="./assets/images/search.svg" alt="logo rechercher" />
                         </div>
                     </div>
                 </form>
             </div>
-            <!-- Les filtres -->
-            <div class="tag" id="tag">
-                <div class="boxTagBlue">
-                    <div id="tagBlue"></div>
-                    <img id="crossBlue" src="./assets/images/close.svg" alt="bouton pour fermer le tag sélectionné">
+            <!-- Les tags -->
+            <div class="tags">
+                <div class="tagsIngredient itemUp">
                 </div>
-                <div class="boxTagGreen">
-                    <div id="tagGreen"></div>
-                    <img id="crossGreen" src="./assets/images/close.svg" alt="bouton pour fermer le tag sélectionné">
+                <div class="tagsAppliance itemUp">
                 </div>
-                <div class="boxTagRed">
-                    <div id="tagRed"></div>
-                    <img id="crossRed" src="./assets/images/close.svg" alt="bouton pour fermer le tag sélectionné">
+                <div class="tagsUstensils itemUp">
                 </div>
-
             </div>
+            <!-- Les filtres -->
             <div class="row filters">
                 <div class="col inputFilters">
                     <!-- ********** Un filtre -->
                     <div class="blockInput">
-                        <input class="bg-primary form-control" type="text" placeholder="Ingrédients">
+                        <input class="bg-primary form-control" type="text" placeholder="Ingrédients" id="inputBlue">
                         <img class="chevron" src="./assets/images/chevron.svg" alt="bouton pour déployer les filtres">
                         <div class="bg-primary dropdown-filter" id="ingredients">
                         </div>
                     </div>
                     <!-- ********** Un filtre -->
                     <div class="blockInput">
-                        <input class="bg-success form-control" type="text" placeholder="Appareils">
+                        <input class="bg-success form-control" type="text" placeholder="Appareils" id="inputGreen">
                         <img class="chevron" src="./assets/images/chevron.svg" alt="bouton pour déployer les filtres">
                         <div class="bg-success dropdown-filter" id="appliances">
                         </div>
                     </div>
                     <!-- ********** Un filtre -->
                     <div class="blockInput">
-                        <input class="bg-danger form-control" type="text" placeholder="Ustensiles">
+                        <input class="bg-danger form-control" type="text" placeholder="Ustensiles" id="inputRed">
                         <img class="chevron" src="./assets/images/chevron.svg" alt="bouton pour déployer les filtres">
                         <div class="bg-danger dropdown-filter" id="ustensils">
                         </div>

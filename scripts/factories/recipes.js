@@ -4,6 +4,7 @@ class Recipe {
         this.image = datas.image;
         this.name = datas.name;
         this.servings = datas.servings;
+        // this.ingredients = datas.ingredients.map(element => element.toLowerCase());
         this.ingredients = datas.ingredients;
         // console.log("Les ingrédients", this.ingredients[0])
         this.time = datas.time;
