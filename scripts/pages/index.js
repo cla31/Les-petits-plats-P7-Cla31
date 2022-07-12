@@ -1,9 +1,14 @@
+//implémentation de la barre de recherche
+
 let recipes = [];
 
 //Tableaux
 let chosenIngredients = [];
 let chosenAppliances = [];
 let chosenUstensils = [];
+
+
+
 
 
 //fonction qui permet de transformer les éléments d'un tableau en objets:
@@ -42,8 +47,11 @@ init(pathJsonProject);
 
 //2:
 function orchestrator() {
+    //2.1
+    const recipesSearchBar = allRecipesFilter(recipes);
     //2.1.Tri de la liste des recettes
-    const filteredIngredients = filterIngredients(recipes);
+    // const filteredIngredients = filterIngredients(recipes);
+    const filteredIngredients = filterIngredients(recipesSearchBar);
     const filteredAppliances = filterAppliances(filteredIngredients);
     //Recettes finales à afficher
     const recipesToDisplay = filterUstensils(filteredAppliances);
@@ -158,6 +166,8 @@ function displayIngredientsFromRecipes(allRecipes) {
                 chosenIngredients.push(
                     item.dataset.element.toLowerCase());
             }
+            //On vide l'input
+            document.querySelector("#inputBlue").value = '';
             orchestrator();
         });
 
@@ -193,12 +203,14 @@ function displayAppliancesFromRecipes(allRecipes) {
     allAppliances.forEach((item) => {
         //A chaque fois qu'on clique sur un item
         item.addEventListener("click", () => {
-            console.log("ITEMMMM", item.dataset.element);
+            // console.log("ITEMMMM", item.dataset.element);
             if (!chosenAppliances.includes(item.dataset.element.toLowerCase())) {
                 chosenAppliances.push(
                     item.dataset.element.toLowerCase()
                 );
             }
+            //On vide l'input
+            document.querySelector("#inputGreen").value = '';
             orchestrator();
         });
     });
@@ -239,6 +251,8 @@ function displayUstensilsFromRecipes(allRecipes) {
             //         // console.log("Cliiiiiiqué!!!!!!!");
             //         // console.log("Tableau des tags selectionnés ds createIngredient....", chosenTags);
             //         // console.log("Les objets ingrédients dans createIngr+++++++++++++++", ingredients);
+            //On vide l'input
+            document.querySelector("#inputRed").value = '';
             orchestrator();
         });
     });
@@ -262,15 +276,15 @@ function displayTagIngredients() {
         `
     }).join('')}`;
         let cross = document.querySelectorAll(".closeIngredients");
-        console.log("crooooss",cross)
+        // console.log("crooooss",cross)
         cross.forEach((tags, index) => tags.addEventListener("click", e=>{
             // console.log("INDEEEEEEEX",index);
             let element = e.target;
             // suppression de l'element graphique
             element.parentNode.remove(element);
-            console.log("ChosenIngr avant 1",chosenIngredients);
+            // console.log("ChosenIngr avant 1",chosenIngredients);
             chosenIngredients = chosenIngredients.filter(e => e !== chosenIngredients[index]);
-            console.log("ChosenIngr après 2",chosenIngredients);
+            // console.log("ChosenIngr après 2",chosenIngredients);
             orchestrator();
         }));
 }
@@ -321,7 +335,7 @@ function displayTagUstensils(){
 
 // Gestion des filtres.
 function filterInput(e) {
-    //toLowerCase = met lea valeurs de la chaîne en miniscule.
+    //toLowerCase = met les valeurs de la chaîne en miniscule.
     const inputValue = e.target.value.toLowerCase();
     // console.log("input value", inputValue);
     const ingredientsList = document.querySelectorAll(".dropdown-item");
@@ -346,3 +360,79 @@ document.querySelector("#inputRed").addEventListener("input", filterInput);
 
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%  BARRE DE RECHERCHE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+//1
+//Gestion barre de recherche
+const searchBar = document.querySelector("#recherche");
+//Listener sur la barre de recherche:::
+searchBar.addEventListener("input", principalFilter);
+//Requette principale
+let SearchBarValue="";
+//Tableau des recettes sélectionnées dans la recherche principale.
+let generalSearch=[];
+
+//Fonction qui filtre les recettes en fonction des caractères (orchestrator).
+//3
+function allRecipesFilter(filterSearchRecipes){
+    let selectedRecipesBySearch = [];
+    console.log("Fonction avec les recettes");
+    for (let recipe of filterSearchRecipes) {
+        console.log("Recipe dans le for",recipe);
+        if (
+            recipe.name
+            .toLowerCase()
+            .replace(/\s/g, "")
+            .includes(SearchBarValue)||
+            recipe.description
+            .toLowerCase()
+            .replace(/\s/g, "")
+            .includes(SearchBarValue))
+    {
+        selectedRecipesBySearch.push(recipe);
+        selectedRecipesBySearch = [...new Set(selectedRecipesBySearch)];
+        // console.log("Tableau selectedRecipesBySearch",selectedRecipesBySearch);
+    }
+    for (let i = 0; i < recipe.ingredients.length; i++) {
+        const ingredientName = recipe.ingredients[i].ingredient
+            .toLowerCase()
+            .replace(/\s/g, "");
+        //console.log(ingredientName);
+        if (ingredientName.includes(SearchBarValue)) {
+            selectedRecipesBySearch.push(recipe);
+            selectedRecipesBySearch = [...new Set(selectedRecipesBySearch)];
+        }
+    }  
+}
+return selectedRecipesBySearch;
+}
+
+//2
+//Fonction ds le listener de l'input
+function principalFilter(e){
+//Valeur de ce que rentre l'utilisateur:::
+SearchBarValue = e.target.value.toLowerCase().replace(/\s/g, "");
+    //Si la longueur de l'input est supérieure à 2
+    if (SearchBarValue.length > 2) {
+        // console.log("OOOOOK");
+        //Fonction qui va filtrer les recettes en fonction des caractères
+        generalSearch=allRecipesFilter(recipes);      
+        if (generalSearch.length === 0) {
+            document.getElementById("recipesCards").innerHTML =
+                "<p id='error'> Aucune recette ne correspond à votre critère ...vous pouvez, par exemple, rechercher 'tarte aux pommes', 'poisson', etc. </p>";
+        } else {
+            orchestrator(generalSearch);
+        }
+       
+    }else{
+        // console.log("3 caractères minimum");
+        orchestrator(recipes);
+    }
+}
+
+// document.getElementById("ingredients").innerHTML

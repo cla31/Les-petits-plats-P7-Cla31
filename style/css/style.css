@@ -202,4 +202,9 @@
   list-style: none;
 }
 
+#error {
+  color: red;
+  margin-left: 20px;
+}
+
 /*# sourceMappingURL=style.css.map */

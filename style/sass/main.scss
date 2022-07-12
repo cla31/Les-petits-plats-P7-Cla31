@@ -241,3 +241,9 @@
             font-size: 12px;
             list-style: none;
         }
+        
+        // Si pas de recettes
+        #error {
+            color: red;
+            margin-left: 20px;
+        }
