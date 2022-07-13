@@ -1,4 +1,11 @@
+        body {
+            display: flex;
+            justify-content: center;
+        }
+        
         .container-fluid {
+            width: 100%;
+            max-width: 2000px;
             // border: 2px solid green;
             margin-top: 20px;
             .header {

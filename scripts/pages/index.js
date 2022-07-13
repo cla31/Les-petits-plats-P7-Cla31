@@ -29,9 +29,22 @@ async function init(pathJson) {
 
     try {
         //1.1
+        let listRecipes;
         const jsonDatas = await getDatas(pathJson);
         const objetsRecipes = jsonDatas.recipes;
-        recipes = Objects(objetsRecipes, Recipe);
+        listRecipes = Objects(objetsRecipes, Recipe);
+        // console.log("RECIPES", recipes);
+        recipes = [
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes
+        ];
+        console.log("recipes", recipes);
         orchestrator();
 
     } catch (erreur) {
@@ -370,6 +383,7 @@ document.querySelector("#inputRed").addEventListener("input", filterInput);
 //1
 //Gestion barre de recherche
 const searchBar = document.querySelector("#recherche");
+console.time("Temps de l'algo utilisant la boucle for");
 //Listener sur la barre de recherche:::
 searchBar.addEventListener("input", principalFilter);
 //Requette principale
@@ -380,10 +394,11 @@ let generalSearch=[];
 //Fonction qui filtre les recettes en fonction des caractères (orchestrator).
 //3
 function allRecipesFilter(filterSearchRecipes){
+    console.log("recipes dans allRecipes",filterSearchRecipes);
     let selectedRecipesBySearch = [];
-    console.log("Fonction avec les recettes");
+    // console.log("Fonction avec les recettes");
     for (let recipe of filterSearchRecipes) {
-        console.log("Recipe dans le for",recipe);
+        // console.log("Recipe dans le for",recipe);
         if (
             recipe.name
             .toLowerCase()
@@ -435,4 +450,4 @@ SearchBarValue = e.target.value.toLowerCase().replace(/\s/g, "");
     }
 }
 
-// document.getElementById("ingredients").innerHTML
+console.timeEnd("Temps de l'algo utilisant la boucle for");
