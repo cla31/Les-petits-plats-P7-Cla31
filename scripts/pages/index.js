@@ -34,7 +34,7 @@ async function init(pathJson) {
         const objetsRecipes = jsonDatas.recipes;
         listRecipes = Objects(objetsRecipes, Recipe);
         // console.log("RECIPES", recipes);
-        //Test pour 4000 recettes:
+        //Test pour 8000 recettes:
         recipes = [
             ...listRecipes,
             ...listRecipes,
