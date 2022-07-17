@@ -34,8 +34,151 @@ async function init(pathJson) {
         const objetsRecipes = jsonDatas.recipes;
         listRecipes = Objects(objetsRecipes, Recipe);
         // console.log("RECIPES", recipes);
-        //Test pour 1000 recettes:
+        //Test pour 4000 recettes:
         recipes = [
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+
+
+
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
+            ...listRecipes,
             ...listRecipes,
             ...listRecipes,
             ...listRecipes,
@@ -364,15 +507,15 @@ function filterInput(e) {
     //toLowerCase = met les valeurs de la chaîne en miniscule.
     const inputValue = e.target.value.toLowerCase();
     // console.log("input value", inputValue);
-    const ingredientsList = document.querySelectorAll(".dropdown-item");
+    const itemsList = document.querySelectorAll(".dropdown-item");
     // console.log("ingredientsList[2].innerHTML", ingredientsList[2].innerHTML);
-    for (i = 0; i < ingredientsList.length; i++) {
+    for (i = 0; i < itemsList.length; i++) {
         // console.log("ingredientsList[i]", ingredientsList[i].innerHTML)
         //Si l'input ne correspond pas à la liste des ingrédients, ne l'affiche pas.
-        if (!ingredientsList[i].innerHTML.toLowerCase().includes(inputValue)) {
-            ingredientsList[i].style.display = "none";
+        if (!itemsList[i].innerHTML.toLowerCase().includes(inputValue)) {
+            itemsList[i].style.display = "none";
         } else {
-            ingredientsList[i].style.display = "list-item";
+            itemsList[i].style.display = "list-item";
         }
     }
 }
@@ -396,6 +539,11 @@ document.querySelector("#inputRed").addEventListener("input", filterInput);
 //1
 //Gestion barre de recherche
 const searchBar = document.querySelector("#recherche");
+//++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++
 console.time("Temps de l'algo");
 //Listener sur la barre de recherche:::
 searchBar.addEventListener("input", principalFilter);
@@ -406,46 +554,12 @@ let generalSearch=[];
 
 //Boucles for: Fonction qui filtre les recettes en fonction des caractères (orchestrator).
 //3
-// function allRecipesFilter(filterSearchRecipes){
-//     let selectedRecipesBySearch = [];
-//     console.log("Fonction avec les recettes");
-//     for (let recipe of filterSearchRecipes) {
-//         console.log("Recipe dans le for",recipe);
-//         if (
-//             recipe.name
-//             .toLowerCase()
-//             .replace(/\s/g, "")
-//             .includes(SearchBarValue)||
-//             recipe.description
-//             .toLowerCase()
-//             .replace(/\s/g, "")
-//             .includes(SearchBarValue))
-//     {
-//         selectedRecipesBySearch.push(recipe);
-//         selectedRecipesBySearch = [...new Set(selectedRecipesBySearch)];
-//         // console.log("Tableau selectedRecipesBySearch",selectedRecipesBySearch);
-//     }
-//     for (let i = 0; i < recipe.ingredients.length; i++) {
-//         const ingredientName = recipe.ingredients[i].ingredient
-//             .toLowerCase()
-//             .replace(/\s/g, "");
-//         //console.log(ingredientName);
-//         if (ingredientName.includes(SearchBarValue)) {
-//             selectedRecipesBySearch.push(recipe);
-//             selectedRecipesBySearch = [...new Set(selectedRecipesBySearch)];
-//         }
-//     }  
-// }
-// return selectedRecipesBySearch;
-// }
-
-//Fonction (prototype array) qui filtre les recettes en fonction des caractères (orchestrator).
-//3
 function allRecipesFilter(filterSearchRecipes){
     let selectedRecipesBySearch = [];
-    console.log("Fonction avec les recettes");
-    filterSearchRecipes.filter((recipe)=>{
-        if(
+    // console.log("Fonction avec les recettes");
+    for (let recipe of filterSearchRecipes) {
+        // console.log("Recipe dans le for",recipe);
+        if (
             recipe.name
             .toLowerCase()
             .replace(/\s/g, "")
@@ -453,23 +567,57 @@ function allRecipesFilter(filterSearchRecipes){
             recipe.description
             .toLowerCase()
             .replace(/\s/g, "")
-            .includes(SearchBarValue)||
-            recipe.ingredients.find((item) =>
-                item.ingredient
-                .toLowerCase()
-                .replace(/\s/g, "")
-                .includes(SearchBarValue)
-            )
-
-        ){
+            .includes(SearchBarValue))
+    {
         selectedRecipesBySearch.push(recipe);
         selectedRecipesBySearch = [...new Set(selectedRecipesBySearch)];
         // console.log("Tableau selectedRecipesBySearch",selectedRecipesBySearch);
-
+    }
+    for (let i = 0; i < recipe.ingredients.length; i++) {
+        const ingredientName = recipe.ingredients[i].ingredient
+            .toLowerCase()
+            .replace(/\s/g, "");
+        //console.log(ingredientName);
+        if (ingredientName.includes(SearchBarValue)) {
+            selectedRecipesBySearch.push(recipe);
+            selectedRecipesBySearch = [...new Set(selectedRecipesBySearch)];
         }
-    });    
+    }  
+}
 return selectedRecipesBySearch;
 }
+
+//Fonction (prototype array) qui filtre les recettes en fonction des caractères (orchestrator).
+//3
+// function allRecipesFilter(filterSearchRecipes){
+//     let selectedRecipesBySearch = [];
+//     console.log("Fonction avec les recettes");
+//     filterSearchRecipes.filter((recipe)=>{
+//         if(
+//             recipe.name
+//             .toLowerCase()
+//             .replace(/\s/g, "")
+//             .includes(SearchBarValue)||
+//             recipe.description
+//             .toLowerCase()
+//             .replace(/\s/g, "")
+//             .includes(SearchBarValue)||
+//             recipe.ingredients.find((item) =>
+//                 item.ingredient
+//                 .toLowerCase()
+//                 .replace(/\s/g, "")
+//                 .includes(SearchBarValue)
+//             )
+
+//         ){
+//         selectedRecipesBySearch.push(recipe);
+//         selectedRecipesBySearch = [...new Set(selectedRecipesBySearch)];
+//         // console.log("Tableau selectedRecipesBySearch",selectedRecipesBySearch);
+
+//         }
+//     });    
+// return selectedRecipesBySearch;
+// }
 //2
 //Fonction ds le listener de l'input
 function principalFilter(e){
