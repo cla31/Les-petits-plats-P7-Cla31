@@ -514,7 +514,7 @@ function filterInput(e) {
     const itemsList = document.querySelectorAll(".dropdown-item");
     // console.log("ingredientsList[2].innerHTML", ingredientsList[2].innerHTML);
     for (i = 0; i < itemsList.length; i++) {
-        // console.log("ingredientsList[i]", ingredientsList[i].innerHTML)
+        // console.log("itemsList[i]", itemsList[i].innerHTML)
         //Si l'input ne correspond pas à la liste des ingrédients, ne l'affiche pas.
         if (!itemsList[i].innerHTML.toLowerCase().includes(inputValue)) {
             itemsList[i].style.display = "none";
