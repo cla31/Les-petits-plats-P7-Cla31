@@ -1,7 +1,6 @@
 //2.4
 function displayTagIngredients() {
     const tagsIngr = document.querySelector(".tagsIngredient");
-    // console.log("chosen tags ds display", chosenTags);
     tagsIngr.innerHTML = ` ${chosenIngredients.map( item =>  
         {return ` 
         <div class="tagSelected" style="background-color:#007bff;">
@@ -11,15 +10,10 @@ function displayTagIngredients() {
         `
     }).join('')}`;
         let cross = document.querySelectorAll(".closeIngredients");
-        // console.log("crooooss",cross)
         cross.forEach((tags, index) => tags.addEventListener("click", e=>{
-            // console.log("INDEEEEEEEX",index);
             let element = e.target;
-            // suppression de l'element graphique
             element.parentNode.remove(element);
-            // console.log("ChosenIngr avant 1",chosenIngredients);
             chosenIngredients = chosenIngredients.filter(e => e !== chosenIngredients[index]);
-            // console.log("ChosenIngr après 2",chosenIngredients);
             orchestrator();
         }));
 }
@@ -34,9 +28,7 @@ function displayTagAppliances(){
     }).join('')}`;
     let cross = document.querySelectorAll(".closeAppliances");
         cross.forEach((tags, index) => tags.addEventListener("click", e=>{
-            // console.log("INDEEEEEEEX",index);
             let element = e.target;
-            // suppression de l'element graphique
             element.parentNode.remove(element);
             chosenAppliances = chosenAppliances.filter(e => e !== chosenAppliances[index]);
             orchestrator();
@@ -54,9 +46,7 @@ function displayTagUstensils(){
     }).join('')}`;
     let cross = document.querySelectorAll(".closeUstensils");
         cross.forEach((tags, index) => tags.addEventListener("click", e=>{
-            // console.log("INDEEEEEEEX",index);
             let element = e.target;
-            // suppression de l'element graphique
             element.parentNode.remove(element);
             chosenUstensils = chosenUstensils.filter(e => e !== chosenUstensils[index]);
             orchestrator();

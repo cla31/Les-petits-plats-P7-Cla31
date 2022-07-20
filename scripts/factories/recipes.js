@@ -13,8 +13,6 @@ class Recipe {
         this.ustensils = datas.ustensils;
     }
 
-
-    //Fonction qui gère l'affichage du template de la gallerie:
     display() {
             return `   
         <article class="col-12 col-lg-4">

@@ -1,14 +1,9 @@
-//implémentation de la barre de recherche
-
 let recipes = [];
 
 //Tableaux
 let chosenIngredients = [];
 let chosenAppliances = [];
 let chosenUstensils = [];
-
-
-
 
 
 //fonction qui permet de transformer les éléments d'un tableau en objets:
@@ -33,7 +28,6 @@ async function init(pathJson) {
         const jsonDatas = await getDatas(pathJson);
         const objetsRecipes = jsonDatas.recipes;
         listRecipes = Objects(objetsRecipes, Recipe);
-        // console.log("RECIPES", recipes);
         //Test pour 8000 recettes:
         recipes = [
             ...listRecipes,
@@ -223,10 +217,8 @@ function orchestrator() {
     //2.1
     const recipesSearchBar = allRecipesFilter(recipes);
     //2.1.Tri de la liste des recettes
-    // const filteredIngredients = filterIngredients(recipes);
     const filteredIngredients = filterIngredients(recipesSearchBar);
     const filteredAppliances = filterAppliances(filteredIngredients);
-    //Recettes finales à afficher
     const recipesToDisplay = filterUstensils(filteredAppliances);
     //2.2.Affiche les recettes
     displayRecipes(recipesToDisplay);
@@ -245,14 +237,9 @@ function orchestrator() {
 
 // Gestion des champs de recherche dans les inputs.
 function filterInput(e) {
-    //toLowerCase = met les valeurs de la chaîne en miniscule.
     const inputValue = e.target.value.toLowerCase();
-    // console.log("input value", inputValue);
     const itemsList = document.querySelectorAll(".dropdown-item");
-    // console.log("ingredientsList[2].innerHTML", ingredientsList[2].innerHTML);
     for (i = 0; i < itemsList.length; i++) {
-        // console.log("itemsList[i]", itemsList[i].innerHTML)
-        //Si l'input ne correspond pas à la liste des ingrédients, ne l'affiche pas.
         if (!itemsList[i].innerHTML.toLowerCase().includes(inputValue)) {
             itemsList[i].style.display = "none";
         } else {
@@ -260,10 +247,7 @@ function filterInput(e) {
         }
     }
 }
-//Pour les ingrédients
-document.querySelector("#inputBlue").addEventListener("input", filterInput);
 
-//Pour les appareils
+document.querySelector("#inputBlue").addEventListener("input", filterInput);
 document.querySelector("#inputGreen").addEventListener("input", filterInput);
-//Pour les ustensils
 document.querySelector("#inputRed").addEventListener("input", filterInput);
