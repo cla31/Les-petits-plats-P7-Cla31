@@ -105,9 +105,11 @@ function principalFilter(e) {
         }
 
     } else {
-        // orchestrator();
-        console.log("search value est sous 3 caractères");
+        SearchBarValue = "";
+        orchestrator();
+        // console.log("search value est sous 3 caractères");
     }
+
 }
 
 console.timeEnd("Temps de l'algo");
