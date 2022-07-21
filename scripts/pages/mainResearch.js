@@ -57,7 +57,7 @@ let generalSearch = [];
 //3
 function allRecipesFilter(filterSearchRecipes) {
     let selectedRecipesBySearch = [];
-    console.log("Fonction avec les recettes");
+    // console.log("Fonction avec les recettes");
     filterSearchRecipes.filter((recipe) => {
         if (
             recipe.name
@@ -94,7 +94,8 @@ function allRecipesFilter(filterSearchRecipes) {
 //2
 function principalFilter(e) {
     SearchBarValue = e.target.value.toLowerCase().replace(/\s/g, "");
-    if (SearchBarValue.length > 2) {
+    // console.log("searchvalue", SearchBarValue.length);
+    if (SearchBarValue.length >= 3) {
         generalSearch = allRecipesFilter(recipes);
         if (generalSearch.length === 0) {
             document.getElementById("recipesCards").innerHTML =
@@ -104,7 +105,8 @@ function principalFilter(e) {
         }
 
     } else {
-        orchestrator(recipes);
+        // orchestrator();
+        console.log("search value est sous 3 caractères");
     }
 }
 

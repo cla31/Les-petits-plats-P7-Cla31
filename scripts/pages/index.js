@@ -198,7 +198,7 @@ async function init(pathJson) {
             ...listRecipes,
             ...listRecipes,
         ];
-        console.log("recipes", recipes);
+        // console.log("recipes", recipes);
         orchestrator();
 
     } catch (erreur) {
