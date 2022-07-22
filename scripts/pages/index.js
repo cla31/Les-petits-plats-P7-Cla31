@@ -609,6 +609,7 @@ SearchBarValue = e.target.value.toLowerCase().replace(/\s/g, "");
     }else{
         // console.log("3 caractères minimum");
         orchestrator(recipes);
+        SearchBarValue = "";
     }
 }
 
