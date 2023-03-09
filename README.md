@@ -21,18 +21,3 @@ This project contains 2 branches to test two different versions of the "search b
 :point_right: [here](https://github.com/cla31/Les-petits-plats-P7-Cla31/tree/cla)
 - "secondAlgo" branch:<br/>
 :point_right: [here](https://github.com/cla31/Les-petits-plats-P7-Cla31/tree/secondAlgo)
-<br/>
-The objective is to be able to compare their performance and then choose the best one.
-##
-To view the page online click  :point_right: [here](https://cla31.github.io/Les-petits-plats-P7-Cla31/#)
-##
-Application overview  (in desktop version):
-<br/>
-<br/>
-![DESKTOP-VERSION](./version-desktop.png)
-<br/>
-<br/>
-Application overview (in mobile version):
-<br/>
-<br/>
-![DESKTOP-VERSION](./version-mobile.png)
