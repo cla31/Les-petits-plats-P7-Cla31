@@ -49,7 +49,7 @@ It appears that for the other tools, JSBench and JSBench.me, the for seems to pe
 ##
 For more details on the feature performance study click  :point_right: [here](https://github.com/cla31/Les-petits-plats-P7-Cla31/blob/cla/Fiche-investigation-de-fonctionnalité.pdf)
 ##
-**Code Architecture:**
+**Code Architecture:**<br/>
 ![ARCHITECTURE-CODE](./architecture-code.png)
 ##
 
