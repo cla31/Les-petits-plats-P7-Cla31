@@ -14,7 +14,7 @@ Skills developed:
 ##
 Start the project:<br/>
 Nothing to install here, just open the index.html file.
-**Using the directory**:<br/>
+**Using the directory:**<br/>
 This project contains 2 branches to test two different versions of the "search bar" functionality.
 - "cla" branch:<br/>
 :point_right: [here](https://github.com/cla31/Les-petits-plats-P7-Cla31/tree/cla)
