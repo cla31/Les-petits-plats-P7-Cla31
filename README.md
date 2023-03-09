@@ -37,3 +37,10 @@ Using loops (while, for...)<br/>
 In this algorithm, use of the for loop which traverses the general array of recipes checking if there is a match between the input entered by the user and the name of the recipe or its description or its ingredients.<br/>
 If the recipe meets this condition, it is added to a table which will then display the recipes updated by the algorithm.
 ##
+**Chosen solution :**<br/>
+It appears that the execution time of the algorithm in native programming clearly increases with the number of data.
+The choice therefore falls on option 1, functional programming.<br/>
+According to the console.time, the for takes longer if we increase the filters does not change or very little regardless of the number of data.
+The for clearly increases with the number of data.<br/>
+It appears that for the other tools, JSBench and JSBench.me, the for seems to perform better. However, these tools do not seem to take the number of data into account.
+##
