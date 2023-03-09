@@ -32,3 +32,8 @@ The user must be able to enter a recipe in the search field and quickly access i
 Using prototype array functions. Here, use of the filter method of the array object which makes it possible to filter the recipes according to the term entered by the user in the search field. For this, the algorithm will check if there are matches between the user's input and the name of the recipe or its ingredients or its description.
 If the recipe meets this condition, it is added to a table which will then display the recipes updated by the algorithm.
 ##
+- **Option 2: native programming (see Algorigram below).
+Using loops (while, for...)**<br/>
+In this algorithm, use of the for loop which traverses the general array of recipes checking if there is a match between the input entered by the user and the name of the recipe or its description or its ingredients.<br/>
+If the recipe meets this condition, it is added to a table which will then display the recipes updated by the algorithm.
+##
