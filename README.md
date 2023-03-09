@@ -14,6 +14,19 @@ Skills developed:
 ##
 Start the project:<br/>
 Nothing to install here, just open the index.html file.
+**Using the directory**:<br/>
+This project contains 2 branches to test two different versions of the "search bar" functionality.
+- "cla" branch:<br/>
+:point_right: [here](https://github.com/cla31/Les-petits-plats-P7-Cla31/tree/cla)
+- "secondAlgo" branch:<br/>
+:point_right: [here](https://github.com/cla31/Les-petits-plats-P7-Cla31/tree/secondAlgo)
+<br/>
+The objective is to be able to compare their performance and then choose the best one.
+##
+**Project problem**:<br/> 
+Filter recipes according to the needs of a user.<br/> 
+The user must be able to enter a recipe in the search field and quickly access it in the interface.<br/>
+
 ##
 To view the page online click  :point_right: [here](https://cla31.github.io/Les-petits-plats-P7-Cla31/#)
 ##
