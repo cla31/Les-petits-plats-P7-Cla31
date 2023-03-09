@@ -26,4 +26,5 @@ The objective of the project is to compare the performance of the 2 versions and
 ##
 **Project problem**:<br/> 
 Filter recipes according to the needs of a user.<br/> 
-The user must be able to enter a recipe in the search field and quickly access it in the interface.<br/>
+The user must be able to enter a recipe in the search field and quickly access it in the interface.
+##
