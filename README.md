@@ -20,8 +20,7 @@ This project contains 2 branches to test two different versions of the "search b
 - "cla" branch:<br/>
 :point_right: [here](https://github.com/cla31/Les-petits-plats-P7-Cla31/tree/cla)
 - "secondAlgo" branch:<br/>
-:point_right: [here](https://github.com/cla31/Les-petits-plats-P7-Cla31/tree/secondAlgo)<br/>
-The objective of the project is to compare the performance of the 2 versions and then choose the best one.
+:point_right: [here](https://github.com/cla31/Les-petits-plats-P7-Cla31/tree/secondAlgo)<br/>The objective of the project is to compare the performance of the 2 versions and then choose the best one.
 ##
 **Project problem**:<br/> 
 Filter recipes according to the needs of a user.<br/> 
