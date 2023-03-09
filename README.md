@@ -54,5 +54,5 @@ For more details on the feature performance study click  :point_right: [here](ht
 <br/>
 ![ARCHITECTURE-CODE](./architecture-code.png)
 ##
-To view the page online click  :point_right: [here](https://github.com/cla31/Les-petits-plats-P7-Cla31/blob/cla/Fiche-investigation-de-fonctionnalité.pdf)
+To view the page online click  :point_right: [here](https://cla31.github.io/Les-petits-plats-P7-Cla31/#)
 ##
