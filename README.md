@@ -47,7 +47,6 @@ It appears that for the other tools, JSBench and JSBench.me, the for seems to pe
 **flowchart:**<br/>
 ![ALGORIGRAMME](./algorigramme.png)
 ##
-For more details on the feature performance study.
-To view the page online click  :point_right: [here](https://github.com/cla31/Les-petits-plats-P7-Cla31/blob/cla/Fiche-investigation-de-fonctionnalité.pdf)
+For more details on the feature performance study click  :point_right: [here](https://github.com/cla31/Les-petits-plats-P7-Cla31/blob/cla/Fiche-investigation-de-fonctionnalité.pdf)
 ##
 ##
