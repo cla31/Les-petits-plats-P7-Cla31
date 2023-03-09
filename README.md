@@ -45,11 +45,13 @@ The for clearly increases with the number of data.<br/>
 It appears that for the other tools, JSBench and JSBench.me, the for seems to perform better. However, these tools do not seem to take the number of data into account.
 ##
 **flowchart:**<br/>
+<br/>
 ![ALGORIGRAMME](./algorigramme.png)
 ##
 For more details on the feature performance study click  :point_right: [here](https://github.com/cla31/Les-petits-plats-P7-Cla31/blob/cla/Fiche-investigation-de-fonctionnalité.pdf)
 ##
 **Code Architecture:**<br/>
+<br/>
 ![ARCHITECTURE-CODE](./architecture-code.png)
 ##
 
