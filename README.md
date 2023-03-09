@@ -12,8 +12,8 @@ Skills developed:
 - Analyze a computer problem
 - Develop an algorithm to solve a problem
 ##
-Start the project:<br/>
-Nothing to install here, just open the index.html file.
+**Start the project:**<br/>
+Nothing to install here, just open the index.html file.<br/>
 **Using the directory:**<br/>
 This project contains 2 branches to test two different versions of the "search bar" functionality.
 - "cla" branch:<br/>
