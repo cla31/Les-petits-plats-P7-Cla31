@@ -8,12 +8,14 @@ Develop a search algorithm in JavaScript.
 
 ![LOGO](./logo.png)<br/>
 ##
-Skills developed:
+**Skills developed:**
 - Analyze a computer problem
 - Develop an algorithm to solve a problem
 ##
+<br/>
 **Start the project:**<br/>
 Nothing to install here, just open the index.html file.<br/>
+<br/>
 **Using the directory:**<br/>
 This project contains 2 branches to test two different versions of the "search bar" functionality.
 - "cla" branch:<br/>
