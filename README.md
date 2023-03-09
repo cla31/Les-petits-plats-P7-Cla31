@@ -44,7 +44,7 @@ According to the console.time, the for takes longer if we increase the filters d
 The for clearly increases with the number of data.<br/>
 It appears that for the other tools, JSBench and JSBench.me, the for seems to perform better. However, these tools do not seem to take the number of data into account.
 ##
-**flowchart:**
+**flowchart:**<br/>
 ![ALGORIGRAMME](./algorigramme.png)
 ##
 ##
