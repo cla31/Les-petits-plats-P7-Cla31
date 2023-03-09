@@ -61,3 +61,7 @@ To view the page online click  :point_right: [here](https://cla31.github.io/Les-
 <br/>
 ![DESKTOP-VERSION](./version-desktop.png)
 ##
+**Application overview** (in mobile version):
+<br/>
+<br/>
+![DESKTOP-VERSION](./version-mobile.png)
