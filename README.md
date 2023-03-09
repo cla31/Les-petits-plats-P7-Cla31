@@ -12,7 +12,6 @@ Develop a search algorithm in JavaScript.
 - Analyze a computer problem
 - Develop an algorithm to solve a problem
 ##
-<br/>
 **Start the project:**<br/>
 Nothing to install here, just open the index.html file.<br/>
 <br/>
